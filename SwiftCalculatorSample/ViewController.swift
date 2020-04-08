@@ -17,76 +17,86 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonEqual: UIButton!
     @IBOutlet weak var buttonC: UIButton!
     @IBOutlet weak var buttonAC: UIButton!
-    var gg = String()//現在の数字の格納変数計算時にInt型にする
-    var sample = Int()//計算結果の格納変数
-    var x = String()//1つ手前までの計算式の格納変数。Clearのために使う
+    var provisionalNumber = String()//現在の数字の格納変数計算時にInt型にする
+    var sample:Int! = nil//計算結果の格納変数
+    var formula = String()//1つ手前までの計算式の格納変数。Clearのために使う
+    var OperationSymbol = String() //演算記号の条件に使う
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     //ラベルにボタンの数字と記号を反映させる
     @IBAction func PushButton0(_ sender: Any) {
-        if gg == ""{//最初に0は使えないようにする
-        }else{
+        if  provisionalNumber != ""{//最初に0は使えないようにする
             calculator.text = "\(calculator.text!)" + "0"
-            gg += "0"
+            provisionalNumber += "0"
         }
     }
     @IBAction func PushButton1(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "1"
-            gg += "1"
+            provisionalNumber += "1"
     }
     
     @IBAction func PushButton2(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "2"
-        gg += "2"
+        provisionalNumber += "2"
     }
     @IBAction func PushButton3(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "3"
-        gg += "3"
+        provisionalNumber += "3"
     }
     @IBAction func PushButton4(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "4"
-        gg += "4"
+        provisionalNumber += "4"
     }
     @IBAction func PushButton5(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "5"
-        gg += "5"
+        provisionalNumber += "5"
     }
     @IBAction func PushButton6(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "6"
-        gg += "6"
+        provisionalNumber += "6"
     }
     @IBAction func PushButton7(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "7"
-        gg += "7"
+        provisionalNumber += "7"
     }
     @IBAction func PushButton8(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "8"
-        gg += "8"
+        provisionalNumber += "8"
     }
     @IBAction func PushButton9(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "9"
-        gg += "9"
+        provisionalNumber += "9"
     }
     
     
     
     //実際に計算する
     @IBAction func PushButtonPlus(_ sender: Any) {
-        if gg != "" {//数字が入力されているときに動作する
-            sample = sample + Int(gg)!//入力した数字を今までの数字の合計と足す
-            gg = ""//リセットする
+        if provisionalNumber != "" {//数字が入力されているときに動作する
+            if sample == nil {//一番最初は元となるSampleに格納する
+                sample = Int(provisionalNumber)!
+                provisionalNumber = ""//リセットする
+                calculator.text = "\(calculator.text!)" + "+"//ラベルにプラスの記号を表示する
+                formula = calculator.text!//これまでの計算式を保存しておく
+            }else if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
+            sample = sample + Int(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+            provisionalNumber = ""//リセットする
             calculator.text = "\(calculator.text!)" + "+"//ラベルにプラスの記号を表示する
-            x = calculator.text!//これまでの計算式を保存しておく
+            formula = calculator.text!//これまでの計算式を保存しておく
+            }
+            OperationSymbol = "Plus"
         }
         
     }
     
 //結果を表示する
     @IBAction func PushButtonEqual(_ sender: Any) {
-        if gg != "" {
-            sample = sample + Int(gg)!//足す
+        if provisionalNumber != "" {
+            if OperationSymbol == "Plus"{
+                sample = sample + Int(provisionalNumber)!//足す
+            }
             calculator.text = String(sample)//計算結果を表示する
             button0.isHidden = true//AC以外のボタンを押せなくする
             button1.isHidden = true
@@ -105,14 +115,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func PushButtonClear(_ sender: Any) {//入力中の数字をリセットする
-            calculator.text = x//保存しておいた計算式を取り出す
-            gg = ""//リセットする
+            calculator.text = formula//保存しておいた計算式を取り出す
+            provisionalNumber = ""//リセットする
     }
     
     @IBAction func PushButtonAllClear(_ sender: Any) {//全てリセットする
             calculator.text = ""
-            gg = ""
-            sample = 0
+            provisionalNumber = ""
+            sample = nil
         if buttonEqual.isHidden == true {//イコールボタンで押せなくなったボタンを押せるようにする
             button0.isHidden = false
             button1.isHidden = false
@@ -128,7 +138,6 @@ class ViewController: UIViewController {
             buttonPlus.isHidden = false
             buttonEqual.isHidden = false
             buttonC.isHidden = false
-            
         }
     }
 }
