@@ -14,11 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var button8: UIButton!
     @IBOutlet weak var button9: UIButton!
     @IBOutlet weak var buttonPlus: UIButton!
+    @IBOutlet weak var buttonMinus: UIButton!
+    @IBOutlet weak var buttonMultiplication: UIButton!
+    @IBOutlet weak var buttonDivision: UIButton!
     @IBOutlet weak var buttonEqual: UIButton!
     @IBOutlet weak var buttonC: UIButton!
     @IBOutlet weak var buttonAC: UIButton!
     var provisionalNumber = String()//現在の数字の格納変数計算時にInt型にする
-    var sample:Int! = nil//計算結果の格納変数
+    var sample:Double! = nil//計算結果の格納変数
     var formula = String()//1つ手前までの計算式の格納変数。Clearのために使う
     var OperationSymbol = String() //演算記号の条件に使う
     
@@ -28,10 +31,12 @@ class ViewController: UIViewController {
     //ラベルにボタンの数字と記号を反映させる
     @IBAction func PushButton0(_ sender: Any) {
         if  provisionalNumber != ""{//最初に0は使えないようにする
-            calculator.text = "\(calculator.text!)" + "0"
+        calculator.text = "\(calculator.text!)" + "0"
             provisionalNumber += "0"
+            
         }
     }
+    
     @IBAction func PushButton1(_ sender: Any) {
         calculator.text = "\(calculator.text!)" + "1"
             provisionalNumber += "1"
@@ -76,27 +81,105 @@ class ViewController: UIViewController {
     @IBAction func PushButtonPlus(_ sender: Any) {
         if provisionalNumber != "" {//数字が入力されているときに動作する
             if sample == nil {//一番最初は元となるSampleに格納する
-                sample = Int(provisionalNumber)!
-                provisionalNumber = ""//リセットする
-                calculator.text = "\(calculator.text!)" + "+"//ラベルにプラスの記号を表示する
-                formula = calculator.text!//これまでの計算式を保存しておく
+                sample = Double(provisionalNumber)!
             }else if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
-            sample = sample + Int(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+            sample = sample + Double(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+            
+            }else if OperationSymbol == "Minus"{
+                sample = sample - Double(provisionalNumber)!//入力した数字を今までの数字の合計とひく
+            }else if OperationSymbol == "Multiplication"{
+                sample = sample * Double(provisionalNumber)!//入力した数字を今までの数字の合計とかける
+            }else if OperationSymbol == "Division"{
+                sample = sample / Double(provisionalNumber)!//入力した数字を今までの数字の合計と割る
+
+            }
             provisionalNumber = ""//リセットする
+            calculator.text = String(sample)
             calculator.text = "\(calculator.text!)" + "+"//ラベルにプラスの記号を表示する
             formula = calculator.text!//これまでの計算式を保存しておく
-            }
             OperationSymbol = "Plus"
         }
         
     }
+    @IBAction func PushButtonMinus(_ sender: Any) {
+        if provisionalNumber != "" {//数字が入力されているときに動作する
+        if sample == nil {//一番最初は元となるSampleに格納する
+            sample = Double(provisionalNumber)!
+        }else if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
+        sample = sample + Double(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+        }else if OperationSymbol == "Minus"{
+            sample = sample - Double(provisionalNumber)!//入力した数字を今までの数字の合計とひく
+        }else if OperationSymbol == "Multiplication"{
+            sample = sample * Double(provisionalNumber)!//入力した数字を今までの数字の合計とかける
+        }else if OperationSymbol == "Division"{
+            sample = sample / Double(provisionalNumber)!//入力した数字を今までの数字の合計と割る
+        }
+            provisionalNumber = ""//リセットする
+            calculator.text = String(sample)
+            calculator.text = "\(calculator.text!)" + "-"//ラベルに-の記号を表示する
+            formula = calculator.text!//これまでの計算式を保存しておく
+            OperationSymbol = "Minus"
+        }
+    }
+    @IBAction func PushButtonMultiplication(_ sender: Any) {
+        if provisionalNumber != "" {//数字が入力されているときに動作する
+        if sample == nil {//一番最初は元となるSampleに格納する
+            sample = Double(provisionalNumber)!
+            provisionalNumber = ""//リセットする
+            calculator.text = "\(calculator.text!)" + "+"//ラベルにプラスの記号を表示する
+        }else if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
+        sample = sample + Double(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+        }else if OperationSymbol == "Minus"{
+            sample = sample - Double(provisionalNumber)!//入力した数字を今までの数字の合計とひく
+        }else if OperationSymbol == "Multiplication"{
+            sample = sample * Double(provisionalNumber)!//入力した数字を今までの数字の合計とかけるる
+        }else if OperationSymbol == "Division"{
+            sample = sample / Double(provisionalNumber)!//入力した数字を今までの数字の合計と割る
+        }
+            provisionalNumber = ""//リセットする
+            calculator.text = String(sample)
+            calculator.text = "\(calculator.text!)" + "×"//ラベルに×の記号を表示する
+            formula = calculator.text!//これまでの計算式を保存しておく
+            OperationSymbol = "Multiplication"
+        }
+    }
+    @IBAction func PushButtonDivision(_ sender: Any) {
+        if provisionalNumber != "" {//数字が入力されているときに動作する
+        if sample == nil {//一番最初は元となるSampleに格納する
+            sample = Double(provisionalNumber)!
+        }else if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
+        sample = sample + Double(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+        }else if OperationSymbol == "Minus"{
+            sample = sample - Double(provisionalNumber)!//入力した数字を今までの数字の合計とひく
+        }else if OperationSymbol == "Multiplication"{
+            sample = sample * Double(provisionalNumber)!//入力した数字を今までの数字の合計とかける
+        }else if OperationSymbol == "Division"{
+            sample = sample / Double(provisionalNumber)!//入力した数字を今までの数字の合計と割る
+        }
+            provisionalNumber = ""//リセットする
+            calculator.text = String(sample)
+            calculator.text = "\(calculator.text!)" + "÷"//ラベルに÷の記号を表示する
+            formula = calculator.text!//これまでの計算式を保存しておく
+            OperationSymbol = "Division"
+        }
+    }
     
 //結果を表示する
     @IBAction func PushButtonEqual(_ sender: Any) {
-        if provisionalNumber != "" {
-            if OperationSymbol == "Plus"{
-                sample = sample + Int(provisionalNumber)!//足す
-            }
+        if sample != nil {
+            if provisionalNumber != ""{//数字が入力されているときに動作する
+            if OperationSymbol == "Plus"{//一つ前の演算記号ボタンがプラスの時
+                sample = sample + Double(provisionalNumber)!//入力した数字を今までの数字の合計と足す
+                
+            }else if OperationSymbol == "Minus"{
+                sample = sample - Double(provisionalNumber)!//入力した数字を今までの数字の合計とひく
+                
+            }else if OperationSymbol == "Multiplication"{
+                sample = sample * Double(provisionalNumber)!//入力した数字を今までの数字の合計とかける
+                
+            }else if OperationSymbol == "Division"{
+            sample = sample / Double(provisionalNumber)!//入力した数字を今までの数字の合計と割る
+        }
             calculator.text = String(sample)//計算結果を表示する
             button0.isHidden = true//AC以外のボタンを押せなくする
             button1.isHidden = true
@@ -110,8 +193,18 @@ class ViewController: UIViewController {
             button8.isHidden = true
             button9.isHidden = true
             buttonPlus.isHidden = true
+            buttonMinus.isHidden = true
+            buttonMultiplication.isHidden = true
+            buttonDivision.isHidden = true
             buttonEqual.isHidden = true
             buttonC.isHidden = true
+            
+            provisionalNumber = ""//リセットする
+            OperationSymbol = ""
+            sample = nil
+            formula = ""
+                
+            }
         }
     }
     @IBAction func PushButtonClear(_ sender: Any) {//入力中の数字をリセットする
@@ -120,9 +213,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func PushButtonAllClear(_ sender: Any) {//全てリセットする
-            calculator.text = ""
-            provisionalNumber = ""
-            sample = nil
+        calculator.text = ""
+        provisionalNumber = ""
+        sample = nil
+        formula = ""
+        OperationSymbol = ""
         if buttonEqual.isHidden == true {//イコールボタンで押せなくなったボタンを押せるようにする
             button0.isHidden = false
             button1.isHidden = false
@@ -136,6 +231,9 @@ class ViewController: UIViewController {
             button8.isHidden = false
             button9.isHidden = false
             buttonPlus.isHidden = false
+            buttonMinus.isHidden = false
+            buttonMultiplication.isHidden = false
+            buttonDivision.isHidden = false
             buttonEqual.isHidden = false
             buttonC.isHidden = false
         }

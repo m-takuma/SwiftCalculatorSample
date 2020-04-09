@@ -139,7 +139,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LR9-1d-HHY"/>
+                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XSh-F8-GpF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-Ct-Iuh">
@@ -151,7 +151,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ruv-5j-x2o"/>
                                     <action selector="PushButtonClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HHQ-ka-TQq"/>
                                 </connections>
                             </button>
@@ -163,9 +162,6 @@
                                 <state key="normal" title="0">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J83-mA-0lp"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1C-kY-lVM">
                                 <rect key="frame" x="66" y="538" width="0.0" height="0.0"/>
@@ -175,9 +171,6 @@
                                 <state key="normal" title="0">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Grp-i0-0N3"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2x-36-Ook">
                                 <rect key="frame" x="170" y="528" width="74" height="63"/>
@@ -212,8 +205,43 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="PushButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3A-GL-fwA"/>
                                     <action selector="PushButtonAllClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iys-jp-KZa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmd-io-W4K">
+                                <rect key="frame" x="280" y="633" width="74" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="PushButtonMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ibq-ph-YyC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHH-UF-KkX">
+                                <rect key="frame" x="280" y="728" width="74" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="PushButtonMultiplication:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a9l-3C-HrK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afW-Ma-3us">
+                                <rect key="frame" x="170" y="728" width="74" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="÷">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="PushButtonDivision:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NAs-Vj-Ndh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,7 +261,10 @@
                         <outlet property="button9" destination="hnD-Ld-mrs" id="u1J-Ww-KbQ"/>
                         <outlet property="buttonAC" destination="3al-6x-xKI" id="vup-GE-RkB"/>
                         <outlet property="buttonC" destination="UNl-Ct-Iuh" id="8md-zO-TkI"/>
+                        <outlet property="buttonDivision" destination="afW-Ma-3us" id="2Ju-Fh-vH5"/>
                         <outlet property="buttonEqual" destination="u0v-MP-2TM" id="UIm-bt-pAw"/>
+                        <outlet property="buttonMinus" destination="Tmd-io-W4K" id="YUG-JN-605"/>
+                        <outlet property="buttonMultiplication" destination="XHH-UF-KkX" id="nbW-dX-8Wi"/>
                         <outlet property="buttonPlus" destination="n2x-36-Ook" id="bVS-s4-kFT"/>
                         <outlet property="calculator" destination="MQQ-9b-i1n" id="7Nd-EM-P41"/>
                     </connections>
