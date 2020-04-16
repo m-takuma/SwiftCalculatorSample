@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  SwiftCalculatorSample
-//
-//  Created by 松尾卓磨 on 2020/04/08.
-//  Copyright © 2020 松尾卓磨. All rights reserved.
-//
 
 import UIKit
 
