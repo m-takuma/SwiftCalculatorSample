@@ -1,18 +1,19 @@
 import UIKit
 
 class ViewController2: UIViewController {
-    var CAL = CalculatorModel()
+    var ButtonMol = ButtonModel()
     var VC = ViewController()
     var CalculatorLabel = UILabel()
     var provisionalNumber = String()//現在の数字の格納変数計算時にInt型にする
     var sample:Double! = nil//計算結果の格納変数
     var formula = String()//1つ手前までの計算式の格納変数。Clearのために使う
     var OperationSymbol = String()//演算記号の条件に使う
+    var Equal = String()
     
     
     override func viewDidLoad() {
-        CAL.BunttonModel()
-        let ButtonArray = CAL.ButtonArray
+        ButtonMol.BunttonModelBasic()
+        let ButtonArray = ButtonMol.ButtonArray
         let frameSizeHeight = view.frame.size.height
         let frameSizeWidth = view.frame.size.width
         let tabBarFrameSizeHeight = tabBarController?.tabBar.frame.size.height
@@ -78,10 +79,6 @@ class ViewController2: UIViewController {
                 print("該当するcaseなし\(i)")
             }
         }
-        
-        
-        
-        
         super.viewDidLoad()
         for i in 0..<20 {
             view.addSubview(ButtonArray[i])
@@ -90,37 +87,93 @@ class ViewController2: UIViewController {
         view.addSubview(CalculatorLabel)
         print("開始しました")
     }
+    
+    
     @objc func tapButton(_ sender: UIButton){
         switch sender.tag {
         case 1:
+            if Equal == "Equal"{
+                CalculatorLabel.text = ""
+                provisionalNumber = ""
+                sample = nil
+                formula = ""
+                OperationSymbol = ""
+            }
             if  provisionalNumber != ""{//最初に0は使えないようにする
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "0"
                 provisionalNumber += "0"
             }
         case 5...7:
+            if Equal == "Equal"{
+                           Equal = ""
+                           CalculatorLabel.text = ""
+                           provisionalNumber = ""
+                           sample = nil
+                           formula = ""
+                           OperationSymbol = ""
+                       }
             let Number = sender.tag - 4
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "\(Number)"
                        provisionalNumber += "\(Number)"
         case 9...11:
+            if Equal == "Equal"{
+                Equal = ""
+                CalculatorLabel.text = ""
+                provisionalNumber = ""
+                sample = nil
+                formula = ""
+                OperationSymbol = ""
+                       }
             let Number = sender.tag - 5
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "\(Number)"
                        provisionalNumber += "\(Number)"
         case 13...15:
+            if Equal == "Equal"{
+                Equal = ""
+                CalculatorLabel.text = ""
+                provisionalNumber = ""
+                sample = nil
+                formula = ""
+                OperationSymbol = ""
+                   }
             let Number = sender.tag - 6
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "\(Number)"
                        provisionalNumber += "\(Number)"
         case 2://clear
             CalculatorLabel.text = formula//保存しておいた計算式を取り出す
             provisionalNumber = ""//リセットする
-        case 3:
-            print("AllClear")
-        case 4:
-            print("Equal")
+        case 3://allClear
+            CalculatorLabel.text = ""
+            provisionalNumber = ""
+            sample = nil
+            formula = ""
+            OperationSymbol = ""
+        case 4://イコール
+            if sample != nil {
+                switch OperationSymbol {
+                case "Plus":
+                    sample = sample + Double(provisionalNumber)!
+                case "Minus":
+                    sample = sample - Double(provisionalNumber)!
+                case "Multiplication":
+                    sample = sample * Double(provisionalNumber)!
+                case "Division":
+                    sample = sample / Double(provisionalNumber)!
+                default:
+                    print("caseがありません")
+                }
+                CalculatorLabel.text = String(sample)
+                formula = ""
+                Equal = "Equal"
+            }
         case 8,12,16,20:
             if provisionalNumber != "" {
                 if sample == nil{
                     sample = Double(provisionalNumber)!
                 }else{
+                    if Equal == "Equal"{
+                        Equal = ""
+                    }else{
                     switch OperationSymbol {
                     case "Plus":
                         sample = sample + Double(provisionalNumber)!
@@ -132,6 +185,7 @@ class ViewController2: UIViewController {
                         sample = sample / Double(provisionalNumber)!
                     default:
                         print("caseがありません")
+                        }
                     }
                 }
                 CalculatorLabel.text = String(sample)
@@ -153,6 +207,27 @@ class ViewController2: UIViewController {
                 }
                 provisionalNumber = ""
                 formula = CalculatorLabel.text!
+            }else{
+                if sample != nil {
+                    CalculatorLabel.text = String(sample)
+                    switch sender.tag {
+                    case 8:
+                        OperationSymbol = "Plus"
+                        CalculatorLabel.text = "\(CalculatorLabel.text!)" + "+"
+                    case 12:
+                        OperationSymbol = "Minus"
+                        CalculatorLabel.text = "\(CalculatorLabel.text!)" + "-"
+                    case 16:
+                        OperationSymbol = "Multiplication"
+                        CalculatorLabel.text = "\(CalculatorLabel.text!)" + "×"
+                    case 20:
+                        OperationSymbol = "Division"
+                        CalculatorLabel.text = "\(CalculatorLabel.text!)" + "÷"
+                    default:
+                        print("エラーです")
+                    }
+                    formula = CalculatorLabel.text!
+                }
             }
         default:
             print("caseがありません")
