@@ -41,8 +41,8 @@ class ViewController2: UIViewController {
                 print("該当するcaseなし\(i)")
             }
             
-            CalculatorLabel.frame = .init(x: x, y: (y - 4 * (x + ButtonSize)) / 2, width: frameSizeWidth - CGFloat(2) * x, height: (y - 4 * (x + ButtonSize)) * 0.4)
-            CalculatorLabel.font = .boldSystemFont(ofSize: ((y - 4 * (x + ButtonSize)) * 0.4) / 3)
+            CalculatorLabel.frame = .init(x: x, y: (y - 4 * (x + ButtonSize)) / 4, width: frameSizeWidth - CGFloat(2) * x, height: (y - 4 * (x + ButtonSize)) * 0.6)
+            CalculatorLabel.font = .boldSystemFont(ofSize: ((y - 4 * (x + ButtonSize)) * 0.6) / 2.5)
             CalculatorLabel.backgroundColor = .clear
             CalculatorLabel.numberOfLines = 2
             CalculatorLabel.textAlignment = .right
