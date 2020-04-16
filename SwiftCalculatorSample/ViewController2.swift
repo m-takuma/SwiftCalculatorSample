@@ -43,7 +43,7 @@ class ViewController2: UIViewController {
             
             CalculatorLabel.frame = .init(x: x, y: (y - 4 * (x + ButtonSize)) / 2, width: frameSizeWidth - CGFloat(2) * x, height: (y - 4 * (x + ButtonSize)) * 0.4)
             CalculatorLabel.font = .boldSystemFont(ofSize: ((y - 4 * (x + ButtonSize)) * 0.4) / 3)
-            CalculatorLabel.backgroundColor = .brown
+            CalculatorLabel.backgroundColor = .clear
             CalculatorLabel.numberOfLines = 2
             CalculatorLabel.textAlignment = .right
             CalculatorLabel.text = ""
