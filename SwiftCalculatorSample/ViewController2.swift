@@ -5,7 +5,7 @@ class ViewController2: UIViewController {
     var VC = ViewController()
     var CalculatorLabel = UILabel()
     var provisionalNumber = String()//現在の数字の格納変数計算時にInt型にする
-    var sample:Double! = nil//計算結果の格納変数
+    var sample:Decimal! = nil//計算結果の格納変数
     var formula = String()//1つ手前までの計算式の格納変数。Clearのために使う
     var OperationSymbol = String()//演算記号の条件に使う
     var Equal = String()
@@ -114,7 +114,7 @@ class ViewController2: UIViewController {
                        }
             let Number = sender.tag - 4
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "\(Number)"
-                       provisionalNumber += "\(Number)"
+            provisionalNumber += "\(Number)"
         case 9...11:
             if Equal == "Equal"{
                 Equal = ""
@@ -149,46 +149,57 @@ class ViewController2: UIViewController {
             formula = ""
             OperationSymbol = ""
         case 4://イコール
+            guard provisionalNumber != "" else {//演算記号の次の数字が入力されていない場合に処理をしない
+                break
+            }
             if sample != nil {
                 switch OperationSymbol {
                 case "Plus":
-                    sample = sample + Double(provisionalNumber)!
+                    sample = sample + Decimal(Double(provisionalNumber)!)
                 case "Minus":
-                    sample = sample - Double(provisionalNumber)!
+                    sample = sample - Decimal(Double(provisionalNumber)!)
+
                 case "Multiplication":
-                    sample = sample * Double(provisionalNumber)!
+                    sample = sample * Decimal(Double(provisionalNumber)!)
+
                 case "Division":
-                    sample = sample / Double(provisionalNumber)!
+                    sample = sample / Decimal(Double(provisionalNumber)!)
+
                 default:
                     print("caseがありません")
                 }
-                CalculatorLabel.text = String(sample)
+                CalculatorLabel.text = "\(String(describing: sample!))"
                 formula = ""
                 Equal = "Equal"
             }
         case 8,12,16,20:
             if provisionalNumber != "" {
                 if sample == nil{
-                    sample = Double(provisionalNumber)!
+                    sample = Decimal(Double(provisionalNumber)!)
+
                 }else{
                     if Equal == "Equal"{
                         Equal = ""
                     }else{
                     switch OperationSymbol {
                     case "Plus":
-                        sample = sample + Double(provisionalNumber)!
+                        sample = sample + Decimal(Double(provisionalNumber)!)
+
                     case "Minus":
-                        sample = sample - Double(provisionalNumber)!
+                        sample = sample - Decimal(Double(provisionalNumber)!)
+
                     case "Multiplication":
-                        sample = sample * Double(provisionalNumber)!
+                        sample = sample * Decimal(Double(provisionalNumber)!)
+
                     case "Division":
-                        sample = sample / Double(provisionalNumber)!
+                        sample = sample / Decimal(Double(provisionalNumber)!)
+
                     default:
                         print("caseがありません")
                         }
                     }
                 }
-                CalculatorLabel.text = String(sample)
+                CalculatorLabel.text = "\(String(describing: sample!))"
                 switch sender.tag {
                 case 8:
                     OperationSymbol = "Plus"
@@ -209,7 +220,7 @@ class ViewController2: UIViewController {
                 formula = CalculatorLabel.text!
             }else{
                 if sample != nil {
-                    CalculatorLabel.text = String(sample)
+                    CalculatorLabel.text = "\(String(describing: sample!))"
                     switch sender.tag {
                     case 8:
                         OperationSymbol = "Plus"

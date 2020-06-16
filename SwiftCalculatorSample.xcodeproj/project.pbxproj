@@ -20,6 +20,7 @@
 /* Begin PBXFileReference section */
 		6815C97C24477467004EAB66 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		6815C97E244774A4004EAB66 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		6818B4D32494FD27002D9F08 /* calculator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = calculator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		68EED309243E114B00C6ADEE /* SwiftCalculatorSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCalculatorSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68EED30C243E114B00C6ADEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68EED30E243E114B00C6ADEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 				68EED315243E115000C6ADEE /* Assets.xcassets */,
 				68EED317243E115000C6ADEE /* LaunchScreen.storyboard */,
 				68EED31A243E115000C6ADEE /* Info.plist */,
+				6818B4D32494FD27002D9F08 /* calculator.playground */,
 			);
 			path = SwiftCalculatorSample;
 			sourceTree = "<group>";
