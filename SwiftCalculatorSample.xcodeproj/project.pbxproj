@@ -42,6 +42,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6818B4D42499C170002D9F08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6815C97E244774A4004EAB66 /* Button.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6818B4D52499C1A2002D9F08 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				68EED312243E114B00C6ADEE /* Main.storyboard */,
+				68EED315243E115000C6ADEE /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6818B4D62499C1CC002D9F08 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				68EED310243E114B00C6ADEE /* ViewController.swift */,
+				6815C97C24477467004EAB66 /* ViewController2.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		68EED300243E114B00C6ADEE = {
 			isa = PBXGroup;
 			children = (
@@ -61,13 +87,11 @@
 		68EED30B243E114B00C6ADEE /* SwiftCalculatorSample */ = {
 			isa = PBXGroup;
 			children = (
+				6818B4D42499C170002D9F08 /* Model */,
+				6818B4D52499C1A2002D9F08 /* View */,
+				6818B4D62499C1CC002D9F08 /* Controller */,
 				68EED30C243E114B00C6ADEE /* AppDelegate.swift */,
 				68EED30E243E114B00C6ADEE /* SceneDelegate.swift */,
-				6815C97E244774A4004EAB66 /* Button.swift */,
-				68EED310243E114B00C6ADEE /* ViewController.swift */,
-				6815C97C24477467004EAB66 /* ViewController2.swift */,
-				68EED312243E114B00C6ADEE /* Main.storyboard */,
-				68EED315243E115000C6ADEE /* Assets.xcassets */,
 				68EED317243E115000C6ADEE /* LaunchScreen.storyboard */,
 				68EED31A243E115000C6ADEE /* Info.plist */,
 				6818B4D32494FD27002D9F08 /* calculator.playground */,

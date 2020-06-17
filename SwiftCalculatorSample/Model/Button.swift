@@ -8,6 +8,7 @@ class ButtonModel:UIViewController{
             let Button = UIButton()
             Button.tag = i
             Button.backgroundColor = .gray
+            Button.layer.cornerRadius = 15.0
             ButtonArray.append(Button)
         }
     }

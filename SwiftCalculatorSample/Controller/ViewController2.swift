@@ -2,13 +2,14 @@ import UIKit
 
 class ViewController2: UIViewController {
     var ButtonMol = ButtonModel()
-    var VC = ViewController()
+    //var VC = ViewController()
     var CalculatorLabel = UILabel()
-    var provisionalNumber = String()//現在の数字の格納変数計算時にInt型にする
+    var provisionalNumber = String()//現在の数字の格納変数計算時に型にする
     var sample:Decimal! = nil//計算結果の格納変数
     var formula = String()//1つ手前までの計算式の格納変数。Clearのために使う
     var OperationSymbol = String()//演算記号の条件に使う
     var Equal = String()
+    
     
     
     override func viewDidLoad() {
@@ -61,10 +62,9 @@ class ViewController2: UIViewController {
                 let title = i - 5
                 ButtonArray[i].setTitle("\(title)", for: .normal)
             case 1:
-                ButtonArray[i].setTitle("C", for: .normal)
+                ButtonArray[i].setTitle("00", for: .normal)
             case 2:
-                ButtonArray[i].setTitle("AC", for: .normal)
-                ButtonArray[i].backgroundColor = .red
+                ButtonArray[i].setTitle(".", for: .normal)
             case 3:
                 ButtonArray[i].setTitle("=", for: .normal)
             case 7:
@@ -73,6 +73,13 @@ class ViewController2: UIViewController {
                  ButtonArray[i].setTitle("-", for: .normal)
             case 15:
                  ButtonArray[i].setTitle("×", for: .normal)
+            case 16:
+                ButtonArray[i].setTitle("AC", for: .normal)
+                ButtonArray[i].backgroundColor = .red
+            case 17:
+                ButtonArray[i].setTitle("C", for: .normal)
+            case 18:
+                ButtonArray[i].setTitle("未定", for: .normal)
             case 19:
                  ButtonArray[i].setTitle("÷", for: .normal)
             default:
@@ -139,15 +146,39 @@ class ViewController2: UIViewController {
             let Number = sender.tag - 6
             CalculatorLabel.text = "\(CalculatorLabel.text!)" + "\(Number)"
                        provisionalNumber += "\(Number)"
-        case 2://clear
-            CalculatorLabel.text = formula//保存しておいた計算式を取り出す
-            provisionalNumber = ""//リセットする
-        case 3://allClear
-            CalculatorLabel.text = ""
-            provisionalNumber = ""
-            sample = nil
-            formula = ""
-            OperationSymbol = ""
+        case 2://00
+            if Equal == "Equal"{
+                CalculatorLabel.text = ""
+                provisionalNumber = ""
+                sample = nil
+                formula = ""
+                OperationSymbol = ""
+            }
+            if  provisionalNumber != ""{//最初に0は使えないようにする
+            CalculatorLabel.text = "\(CalculatorLabel.text!)" + "00"
+                provisionalNumber += "00"
+            }
+        case 3://.
+            if Equal == "Equal"{
+                Equal = ""
+                CalculatorLabel.text = ""
+                provisionalNumber = ""
+                sample = nil
+                formula = ""
+                OperationSymbol = ""
+            }
+            guard provisionalNumber != "" else {
+                CalculatorLabel.text = "\(CalculatorLabel.text!)" + "0."
+                provisionalNumber += "0."
+                break
+            }
+            guard provisionalNumber.contains(".") == false else {
+                break
+            }
+            CalculatorLabel.text = "\(CalculatorLabel.text!)" + "."
+            provisionalNumber += "."
+            //CalculatorLabel.text = CalculatorLabel.text! + "."
+            
         case 4://イコール
             guard provisionalNumber != "" else {//演算記号の次の数字が入力されていない場合に処理をしない
                 break
@@ -240,6 +271,16 @@ class ViewController2: UIViewController {
                     formula = CalculatorLabel.text!
                 }
             }
+        case 17:
+            //allClear
+            CalculatorLabel.text = ""
+            provisionalNumber = ""
+            sample = nil
+            formula = ""
+            OperationSymbol = ""
+        case 18:
+            CalculatorLabel.text = formula//保存しておいた計算式を取り出す
+            provisionalNumber = ""//リセットする
         default:
             print("caseがありません")
         }
